@@ -27,10 +27,7 @@ function birthday(s: number[], d: number, m: number): number {
             return;
         }
         const segment = array.slice(index, index + m);
-        console.log(JSON.stringify({m, index, segment, length: s.length}));
         const segmentSum = segment.reduce((a, b) => { return a + b; }, 0);
-
-        console.log(JSON.stringify({d, segmentSum}));
 
         if (segmentSum != d) {
             return;
