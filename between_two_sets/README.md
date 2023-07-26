@@ -1,6 +1,3 @@
-
-https://lunarscents.github.io/2019/07/08/betweenTwoSets/
-
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 
 https://www.tutorialspoint.com/typescript/typescript_array_every.htm
