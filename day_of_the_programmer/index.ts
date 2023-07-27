@@ -11,43 +11,34 @@ function readLine(): string {
 }
 
 /*
- * Complete the 'divisibleSumPairs' function below.
+ * Complete the 'dayOfProgrammer' function below.
  *
- * The function is expected to return an INTEGER.
- * The function accepts following parameters:
- *  1. INTEGER n
- *  2. INTEGER k
- *  3. INTEGER_ARRAY ar
+ * The function is expected to return a STRING.
+ * The function accepts INTEGER year as parameter.
  */
 
-function divisibleSumPairs(n: number, k: number, ar: number[]): number {
-    let pairs = 0;
-    ar.map((value, index, array) => {
-        for(let offset = index + 1; offset < ar.length; offset++) {
-            const aSum = array[index] + array[offset];
-            const aRem = aSum % k;
-            console.log(JSON.stringify({index, aIndex: array[index], offset, aOffset: array[offset], aSum, aRem, k}));
-            if (aRem === 0) {
-                pairs++;
-            }
+function dayOfProgrammer(year: number): string {
+    let day: number = 13;
+    if (year < 1918) {
+        if ((year % 4) === 0) {
+            day = 12;
         }
-    })
-
-    return pairs
+    } else if (year >= 1919) {
+        if (((year % 400) === 0) || (((year % 4) === 0) && ((year % 100) !== 0))) {
+            day = 12;
+        }
+    } else if (year === 1918) {
+        day += ((31 + 14) - 32);
+    }
+    return String(day) + '.09.' + String(year);
 }
 
-inputString = fs.readFileSync('./test_data/test_case_1.txt', 'utf-8');
+inputString = fs.readFileSync('./test_data/test_case_59.txt', 'utf-8');
 
 inputLines = inputString.split('\n');
 
-const firstMultipleInput: string[] = readLine().replace(/\s+$/g, '').split(' ');
+const year: number = parseInt(readLine().trim(), 10);
 
-const n: number = parseInt(firstMultipleInput[0], 10);
-
-const k: number = parseInt(firstMultipleInput[1], 10);
-
-const ar: number[] = readLine().replace(/\s+$/g, '').split(' ').map(arTemp => parseInt(arTemp, 10));
-
-const result: number = divisibleSumPairs(n, k, ar);
+const result: string = dayOfProgrammer(year);
 
 console.log(result + '\n');
